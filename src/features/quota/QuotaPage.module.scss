@@ -218,3 +218,17 @@
     gap: 16px;
   }
 }
+
+.viewSelect {
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 8px 12px;
+  font: inherit;
+  font-size: 13px;
+}
+.sort {
+  display: flex;
+  gap: 8px;
+}

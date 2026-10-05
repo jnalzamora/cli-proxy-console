@@ -2219,5 +2219,26 @@
     "unavailable": "Сбросы временно недоступны.",
     "rate_limited": "Слишком много запросов.",
     "auth_error": "Авторизация отклонена."
+  },
+  "quota_ledger": {
+    "summary": "Сводка квот провайдеров",
+    "weekly": "Лимит за 7 дней",
+    "monthly": "Месячный лимит",
+    "window": "Текущее окно",
+    "of_capacity": "из {{capacity}}%",
+    "no_reset": "Сброс не ожидается",
+    "not_loaded": "Квота не загружена",
+    "show": "Показать",
+    "hide": "Скрыть",
+    "loading": "Обновление квоты…",
+    "details_for": "Сведения об аккаунте {{name}}",
+    "view": "Вид квот",
+    "ledger": "Список",
+    "cards": "Карточки",
+    "show_emails": "Показать email",
+    "hide_emails": "Скрыть email",
+    "sample_data": "Демо-данные",
+    "connect": "Подключить сервер",
+    "preview_refreshed": "Демо-квоты обновлены"
   }
 }

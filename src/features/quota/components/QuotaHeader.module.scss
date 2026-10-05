@@ -20,7 +20,7 @@
 
 .title {
   margin: 0;
-  font-size: clamp(26px, 3.2vw, 30px);
+  font-size: clamp(28px, 3.2vw, 34px);
   line-height: 1.15;
   font-weight: 700;
   letter-spacing: -0.02em;
@@ -156,4 +156,15 @@
   .spinning {
     animation: none;
   }
+}
+
+.secondaryAction {
+  padding: 10px 16px;
+  border: 1px solid var(--border-color);
+  border-radius: 999px;
+  background: transparent;
+  color: var(--text-secondary);
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 600;
 }

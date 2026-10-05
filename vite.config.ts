@@ -37,6 +37,7 @@ function getVersion(): string {
 
 // https://vitejs.dev/config/
 export default defineConfig({
+  server: { allowedHosts: ['nicks-mac-mini.tail0c34a5.ts.net'] },
   plugins: [
     react(),
     viteSingleFile({

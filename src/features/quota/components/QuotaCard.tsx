@@ -7,6 +7,7 @@
  * - success：provider Body（穿 QuotaBody.module.scss 全页外衣）。
  */
 
+import { maskIdentity } from '../ledger';
 import { useState, type CSSProperties } from 'react';
 import { useTranslation } from 'react-i18next';
 import { IconRefreshCw } from '@/components/ui/icons';
@@ -30,6 +31,7 @@ import styles from './QuotaCard.module.scss';
 const quotaClasses = bindQuotaClasses(bodyStyles, 'QuotaBody.module.scss');
 
 export type QuotaCardProps = {
+  showEmails?: boolean;
   entry: QuotaFileEntry;
   quota?: QuotaCardState;
   resolvedTheme: ResolvedTheme;
@@ -55,7 +57,8 @@ export function QuotaCard(props: QuotaCardProps) {
   const { t } = useTranslation();
   const adapter = QUOTA_ADAPTERS[entry.type];
   const file = entry.file;
-  const displayName = getQuotaDisplayName(file);
+  const identity = getQuotaDisplayName(file);
+  const displayName = props.showEmails === false ? maskIdentity(identity) : identity;
 
   // 挂载时捕获一次延迟：后续 props 变 null 不影响本卡（React 19 禁渲染期读 ref）
   const [mountEntranceDelayMs] = useState<number | null>(entranceDelayMs ?? null);

@@ -25,6 +25,7 @@ import { getQuotaCacheKey } from '@/utils/quota/identity';
 import { ProviderTabs } from '@/features/authFiles/components/ProviderTabs';
 import { QuotaHeader } from './components/QuotaHeader';
 import { QuotaCard } from './components/QuotaCard';
+import { QuotaLedger, QuotaSummary } from './components/QuotaLedger';
 import { QuotaTimeline } from './components/QuotaTimeline';
 import {
   CARD_ENTRANCE_BUDGET_MS,
@@ -76,6 +77,8 @@ export function QuotaPage() {
   );
   const [page, setPage] = useState(1);
   const [search, setSearch] = useState('');
+  const [view, setView] = useState('ledger');
+  const [showEmails, setShowEmails] = useState(false);
   const searchInputRef = useRef<HTMLInputElement>(null);
   // 页头 + tabs 的入场级联（标题 → meta → 动作 → tabs，级差 70ms）
   const revealRef = useRevealGroup<HTMLDivElement>();
@@ -321,6 +324,8 @@ export function QuotaPage() {
         refreshing={loading || batchLoading}
         disableControls={disableControls}
         onRefreshAll={handleRefreshAll}
+        showEmails={showEmails}
+        onToggleEmails={() => setShowEmails(!showEmails)}
       />
 
       <section className={styles.workbench}>
@@ -363,6 +368,15 @@ export function QuotaPage() {
             )}
           </div>
           <div className={styles.sort}>
+            <select
+              className={styles.viewSelect}
+              value={view}
+              onChange={(event) => setView(event.target.value)}
+              aria-label={t('quota_ledger.view')}
+            >
+              <option value="ledger">{t('quota_ledger.ledger')}</option>
+              <option value="cards">{t('quota_ledger.cards')}</option>
+            </select>
             <Select
               value={sortMode}
               options={sortOptions}
@@ -377,6 +391,10 @@ export function QuotaPage() {
           <div className={styles.errorBanner} role="alert">
             {error}
           </div>
+        )}
+
+        {!loading && !isEmpty && (
+          <QuotaSummary entries={sortedEntries} quotaFor={getQuota} resolvedTheme={resolvedTheme} />
         )}
 
         {loading ? (
@@ -413,10 +431,32 @@ export function QuotaPage() {
               )
             }
           />
+        ) : view === 'ledger' ? (
+          <QuotaLedger
+            entries={pageItems}
+            quotaFor={getQuota}
+            resolvedTheme={resolvedTheme}
+            showEmails={showEmails}
+            canRefresh={canUseActions}
+            onRefresh={(entry) => void refreshQuota(entry.file, QUOTA_ADAPTERS[entry.type])}
+            renderDetails={(entry) => (
+              <QuotaCard
+                showEmails={showEmails}
+                entry={entry}
+                quota={getQuota(entry)}
+                resolvedTheme={resolvedTheme}
+                canRefresh={canUseActions && !entry.file.disabled}
+                resetting={resettingQuotaName === getQuotaCacheKey(entry.file)}
+                onRefresh={() => void refreshQuota(entry.file, QUOTA_ADAPTERS[entry.type])}
+                onReset={() => resetQuota(entry.file, QUOTA_ADAPTERS[entry.type])}
+              />
+            )}
+          />
         ) : (
           <div className={styles.grid}>
             {pageItems.map((entry, index) => (
               <QuotaCard
+                showEmails={showEmails}
                 key={`${entry.type}:${getQuotaCacheKey(entry.file)}`}
                 entry={entry}
                 quota={getQuota(entry)}

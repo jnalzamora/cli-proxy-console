@@ -2225,5 +2225,26 @@
     "unavailable": "Resets are currently unavailable.",
     "rate_limited": "Request rate limited.",
     "auth_error": "Authorization was refused."
+  },
+  "quota_ledger": {
+    "summary": "Provider quota summary",
+    "weekly": "7-day limit",
+    "monthly": "Monthly limit",
+    "window": "Current window",
+    "of_capacity": "of {{capacity}}%",
+    "no_reset": "No reset pending",
+    "not_loaded": "Quota not loaded",
+    "show": "Show",
+    "hide": "Hide",
+    "loading": "Refreshing quota…",
+    "details_for": "Account details for {{name}}",
+    "view": "Quota view",
+    "ledger": "Ledger",
+    "cards": "Cards",
+    "show_emails": "Show emails",
+    "hide_emails": "Hide emails",
+    "sample_data": "Sample data",
+    "connect": "Connect server",
+    "preview_refreshed": "Sample quotas refreshed"
   }
 }

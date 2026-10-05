@@ -2249,5 +2249,26 @@
     "unavailable": "重置暫不可用。",
     "rate_limited": "請求過於頻繁。",
     "auth_error": "授權遭拒。"
+  },
+  "quota_ledger": {
+    "summary": "供應商額度摘要",
+    "weekly": "7 天限額",
+    "monthly": "月限額",
+    "window": "目前視窗",
+    "of_capacity": "共 {{capacity}}%",
+    "no_reset": "無待重設額度",
+    "not_loaded": "尚未載入額度",
+    "show": "顯示",
+    "hide": "隱藏",
+    "loading": "正在重新整理額度…",
+    "details_for": "{{name}} 的帳號詳細資料",
+    "view": "額度檢視",
+    "ledger": "清單",
+    "cards": "卡片",
+    "show_emails": "顯示信箱",
+    "hide_emails": "隱藏信箱",
+    "sample_data": "範例資料",
+    "connect": "連線伺服器",
+    "preview_refreshed": "範例額度已重新整理"
   }
 }

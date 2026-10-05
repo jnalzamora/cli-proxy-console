@@ -2223,5 +2223,26 @@
     "unavailable": "重置暂不可用。",
     "rate_limited": "请求过于频繁。",
     "auth_error": "授权被拒绝。"
+  },
+  "quota_ledger": {
+    "summary": "提供商额度汇总",
+    "weekly": "7 天限额",
+    "monthly": "月限额",
+    "window": "当前窗口",
+    "of_capacity": "总计 {{capacity}}%",
+    "no_reset": "无待重置额度",
+    "not_loaded": "额度尚未加载",
+    "show": "显示",
+    "hide": "隐藏",
+    "loading": "正在刷新额度…",
+    "details_for": "{{name}} 的账号详情",
+    "view": "额度视图",
+    "ledger": "列表",
+    "cards": "卡片",
+    "show_emails": "显示邮箱",
+    "hide_emails": "隐藏邮箱",
+    "sample_data": "示例数据",
+    "connect": "连接服务器",
+    "preview_refreshed": "示例额度已刷新"
   }
 }
