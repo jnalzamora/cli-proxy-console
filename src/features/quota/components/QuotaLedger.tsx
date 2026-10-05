@@ -196,7 +196,9 @@ export function QuotaLedger({
                       </strong>
                       <span>
                         {plan
-                          ? plan.charAt(0).toUpperCase() + plan.slice(1)
+                          ? entry.type === 'claude' && plan.startsWith('plan_')
+                            ? t(`claude_quota.${plan}`)
+                            : plan.charAt(0).toUpperCase() + plan.slice(1)
                           : getTypeLabel(t, type)}
                       </span>
                     </div>
